@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="天津大学天外天网站是集网上思想教育、新闻咨询、资源下载、娱乐互动及网上办公为一体的综合性校园门户网站。不仅拥有学生党建、网上社区、新闻中心、理论考试、素质教育、国防教育等招牌栏目，更设置了深受同学们喜欢的电影、音乐、游戏、软件、动漫、bt下载等栏目，并且新开了博客，相册等栏目。">
+<meta name="keywords" content="天外天,天外天社区,twt,天津大学,青春活力天外天,tju,大学,同学,个人主页,交友,聊天,社区,群组,相册,实名,校园">
+<meta name="apple-mobile-web-app-title" content="天外天">
+<title>天外天 &hearts; 天津大学</title>
+<link rel="stylesheet" href="/default2010B/twt1/assets/stylesheet/default.min.css?v=aed545c2" />
+<script src="/default2010B/twt1/assets/javascript/default.min.js?v=e94eafa9"></script>
+<link rel="shortcut icon" href="/favicon.ico?20140301a" type="image/x-icon" />
+<link rel="apple-touch-icon-precomposed" href="/static/img/ios/57.png?20140301" />
+<link rel="apple-touch-icon-precomposed" href="/static/img/ios/72.png?20140301" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="/static/img/ios/76.png?20140301" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="/static/img/ios/114.png?20140301" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="/static/img/ios/120.png?20140301" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="/static/img/ios/152.png?20140301" sizes="152x152" />
+
+<!--登录-->
+<script>
+$('#myModal').modal('toggle');
+$(document).ready(function() {
+twt_summer.checklogin();
+});
+
+var ScrollToTop=ScrollToTop||{
+    setup:function(){
+    	
+    	var a=$(window).height()/2;
+    	$(window).scroll(function(){
+    		(window.innerWidth?window.pageYOffset:document.documentElement.scrollTop)>=a?$("#ScrollToTop").removeClass("Offscreen"):$("#ScrollToTop").addClass("Offscreen")
+    	});
+    	$("#ScrollToTop").click(function(){
+    		$("html, body").animate({scrollTop:"0px"},400);
+    		return false
+    	})
+    }
+};
+
+var indexTimeOut = null;
+var indexObjTemp = null;
+function mover(object){
+
+//子菜单
+var ss=document.getElementById("DM_"+object);
+  var mm=document.getElementById("li_"+object);
+  var me="li_"+object;
+
+  if(indexTimeOut == object){
+    clearTimeout(indexObjTemp);
+  }else{
+    clearTimeout(indexObjTemp);
+    var ssPre = document.getElementById("DM_"+indexTimeOut );
+    var mmPre =document.getElementById("li_"+indexTimeOut );
+    ssPre.style.display="none";
+    mmPre.className="";
+  }
+
+ss.style.display="block";
+mm.className=me;
+
+};
+
+function mout(object){
+//子菜单
+var ss=document.getElementById("DM_"+object);
+  var mm=document.getElementById("li_"+object);
+  
+  indexTimeOut = object;
+  indexObjTemp = setTimeout(function(){
+    ss.style.display="none";
+    mm.className="";
+  },250);
+  
+  
+
+
+};
+$(function(){
+    $.ajax({
+type: "GET",
+    	url:"http://www.twt.edu.cn/ihome/api/dabiaolv.php",
+    	success: function (data) {
+    eval("data="+data);   
+    	    var l = data.length;
+    for(var i=0;i<l;i++){
+$(".zhongyao ul").append("<li><a href='" +data.zhongyao[i][1]+ "'>" +data.zhongyao[i][0]+
+    "</a><span>" +data.zhongyao[i][2]+ "</span></li>");
+    	    }
+    callback();
+    	  
+    	}
+    });
+})        
+
+</script>
+</head>
+<body>
+<!-- Menu -->
+<div id="menu">
+    <div class="menuBackGround"></div>
+    <div id="layout">
+        <h1 id="twt-logo" class="left">
+            <a href="/" title="天津大学天外天" id="logo">天津大学天外天</a>
+        </h1>
+        <ul id="mainMenu" class="left">
+            <li id="li_1" onmouseover='mover(1);' onmouseout='mout(1);'>
+                <a href="http://news.twt.edu.cn/" target="_blank"></a>
+            </li>
+            <div class="downMenuBroder" id="DM_1" style="display:none;" onmouseover='mover(1);' onmouseout='mout(1);'>
+                <div class="downMenuGround"></div>
+                <ul class="downMenu">
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=secondpage&type=2" target="_blank">校园公告</a></li>
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=secondpage&type=1" target="_blank">重要新闻</a></li>
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=secondpage&type=5" target="_blank">视点观察</a></li>
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=secondpage&type=3" target="_blank">缤纷北洋</a></li>
+                </ul>
+            </div>
+            <li id="li_2" onmouseover='mover(2);' onmouseout='mout(2);'>
+                <a href="#"></a>
+            </li>
+            <div class="downMenuBroder" id="DM_2" style="display:none;" onmouseover='mover(2);' onmouseout='mout(2);'>
+                <div class="downMenuGround"></div>
+                    <ul class="downMenu">
+                        <li><a href="http://www.twt.edu.cn/party" target="_blank">党建</a></li>
+                        <li><a href="http://psych.tju.edu.cn" target="_blank">心理</a></li>
+                        <li><a href="/default2010B/twt1/abroad.php" target="_blank">留学</a></li>
+                        <li><a href="http://www.twt.edu.cn/theory/thquiz/" target="_blank">理论考试</a></li>
+                    </ul>
+            </div>
+            <li id="li_3" onmouseover='mover(3);' onmouseout='mout(3);'><a href="#"></a></li>
+            <div class="downMenuBroder" id="DM_3" style="display:none;width:460px;" onmouseover='mover(3);' onmouseout='mout(3);'>
+                <div class="downMenuGround" style="width:460px;"></div>
+                <ul class="downMenu">
+                    <li><a href="http://mobile.twt.edu.cn" target="_blank">微北洋</a></li>
+                    <li><a href="http://job.tju.edu.cn" target="_blank">就业指导</a></li>
+                    <li><a href="http://service.twt.edu.cn/lost.php" target="_blank">失物招领</a></li>
+                    <li><a href="http://www.twt.edu.cn/suguan" target="_blank">宿舍服务</a></li>
+                    <li><a href="http://letter.twtstudio.com/" target="_blank">网络收发</a></li>
+                </ul>
+            </div>
+            <li id="li_4" onmouseover='mover(4);' onmouseout='mout(4);'><a href="#"></a></li>
+            <div class="downMenuBroder" id="DM_4" style="display:none;width:460px;" onmouseover='mover(4);' onmouseout='mout(4);'>
+                <div class="downMenuGround" style="width:460px;"></div>
+                <ul class="downMenu">
+                    <li><a href="http://www.twt.edu.cn/ihome/" target="_blank">社区</a></li>
+                    <li><a href="http://disk.twt.edu.cn/" target="_blank">网盘</a></li>
+                    <li><a href="http://www.twt.edu.cn/ihome/shijian/" target="_blank">实践</a></li>
+                    <li><a href="http://mall.twt.edu.cn" target="_blank">TWT商城</a></li>
+                    <li><a href="http://pt.twt.edu.cn" target="_blank">北洋园PT</a></li>
+                </ul>
+            </div>
+        </ul>
+
+        <div id="search" class="left">
+            <!--搜索新闻-->
+            <form class="roundStyle" name="search" target="_blank" method="get" action="http://news.twt.edu.cn/"  >
+                <input type="hidden" name="c" value="default"/>
+                <input type="hidden" name="a" value="newssearch"/>
+                <input type="text" name="key" id="keywords" class="left" autocomplete="off" placeholder="新闻标题"/>
+                <input type="submit" id="Btn" value="" class="left" />
+            </form>
+            <!--搜索结束-->
+        </div>
+
+        <div id="myModal" class="log-dialog modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close right" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">TWT 天外天登录</h3>
+            </div>
+            <form name="register" action="http://www.twt.edu.cn/default2010B/twt1/login_action.php" method="post" spellcheck="false" class="register log-form">
+                <div class="modal-body">
+                    <label>用户名：</label>
+                    <input type="text" id="user" class="registerStyle" name="username" /></br>
+                    <label>密&nbsp;&nbsp;&nbsp;码：</label>
+                    <input type="password" id="pass" class="registerStyle" name="password"/>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">登 录</button>
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                </div>
+            </form>
+        </div>
+        <div class="right menu-right">
+            <p id="menuLink">
+                <a href="http://www.twt.edu.cn/default/email/mail_president.htm">校长信箱</a>
+                <a href="http://bbs.tju.edu.cn">求实BBS</a>
+            </p>
+            <div id="logintwt">
+                <a href="#myModal" role="button" class="btn" data-toggle="modal" style="border-radius:30px;">登 录</a>
+                <a href="http://www.twt.edu.cn/account/reg.php" role="button" class="btn" style="border-radius:30px;">注 册</a>
+                <a href="http://www.twt.edu.cn/account/forget.php?t=password" style="color:#FFB90F;font-size:14px;">找回密码</a>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<!-- Menu End -->
+<!-- weather -->
+<div class="weatherFrame" id="weatherFrame" data-weather="多云">
+    <img src="/default2010B/twt1/images/weather.png" class="left" id="Wea"/>
+    <div id="weather">
+<div class="left weatherDate">
+    	    <p>星期天 2014-11-16</p>
+    <p class="luna">甲午年（马）廿四</p>
+    	</div>
+<div class="left weatherDiv">
+    	   <p class="left">10 ℃ ~ 2 ℃</p>
+    	   <p>天津 多云</p>
+    	</div>
+    </div>
+</div>
+<!-- weather End -->
+
+<div id="sug">
+    <a href="#sugModal" role="button" class="btn" data-toggle="modal">意见反馈</a>
+</div>
+
+<div id="sugModal" class="sug-dialog modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close right" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="sugModalLabel">TWT 意见反馈</h3>
+    </div>
+    <form name="register" action="http://www.twt.edu.cn/default2010B/twt1/sug.php" method="post" spellcheck="false" class="sug-form register">
+        <div class="modal-body">
+            <label>联系方式(E-Mail/QQ/手机)：</label>
+            <input type="text" class="registerStyle register-contact" name="tele" />
+            <label>内容：</label>
+            <textarea class="registerStyle register-content" rows="5" cols="50" name="content"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+            <button class="btn btn-primary">提交</button>
+        </div>
+    </form>
+</div>
+
+
+
+<!-- header -->
+<div id="warpper">
+    <div id="focus">
+        <div class="focusWarp">
+            <ul class="imgList">
+                            <li><a href="#"><img src="/default2010B/twt1/upload/xiaoyaunhaoshengyin01.jpg" width="1440" height="420"/></a></li>
+                             <li><a href="#"><img src="/default2010B/twt1/upload/%E6%82%BC%E5%BF%B5banner-%E6%81%A2%E5%A4%8D%E7%9A%84.jpg" width="1440" height="420"/></a></li>
+                             <li><a href="#"><img src="/default2010B/twt1/upload/%E5%AE%BF%E8%88%8D2.jpg" width="1440" height="420"/></a></li>
+                             <li><a href="#"><img src="/default2010B/twt1/upload/banner1.png" width="1440" height="420"/></a></li>
+                  
+            </ul>
+            <ul class="imgList_two">
+                                <li><a href="http://voice.yiban.cn/songs/index?schoolId=3002" target="_blank"><img src="/default2010B/twt1/upload/xiaoyuanhaoshengying00.jpg" width="596" height="175"/></a></li>
+                                <li><a href="" target="_blank"><img src="/default2010B/twt1/upload/one_size1.png" width="596" height="175"/></a></li>
+                                <li><a href="http://www.twt.edu.cn" target="_blank"><img src="/default2010B/twt1/upload/one_size1.png" width="596" height="175"/></a></li>
+                                <li><a href="" target="_blank"><img src="/default2010B/twt1/upload/one_size1.png" width="596" height="175"/></a></li>
+                   
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- header　End-->
+
+<!-- News -->
+
+<div class="news column" id="news">
+  <div class="container">
+      <h2 class="column-title">
+          <a href="http://news.twt.edu.cn/">新闻News</a>
+      </h2>
+    <div class="news1">
+      <div class="notice1 left" >
+         <h3>校园公告</h3>
+         <ul class="ranklist">
+                                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47941" id="top" target="_blank">关于举办2015第七届国际大学生雪雕大赛的通知</a><span>11-14</span></li>
+                                    <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47909" id="top" target="_blank">关于组织参加“2015年全国大学生英语竞赛”的通知</a><span>11-13</span></li>
+                            <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47969" target="_blank">AIESEC世界工坊举办通知</a><span>11-15</span></li>
+                            <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47938" target="_blank">【反恐精英】八强队伍介绍（下篇）</a><span>11-14</span></li>
+                            <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47937" target="_blank">【反恐精英】八强队伍介绍（上篇）</a><span>11-14</span></li>
+                            <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47914" target="_blank">天津大学第八届“十佳心理委员”评选拉开帷幕</a><span>11-13</span></li>
+                            <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47911" target="_blank">“科技影院”第一季观影活动通知</a><span>11-13</span></li>
+                            <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47896" target="_blank">关于天津大学第三十二届研究生会主席团成员产生流程的说明</a><span>11-12</span></li>
+                       </ul>
+         <a href="http://news.twt.edu.cn/?c=default&a=secondpage&type=2" style="color:#1865ff;" class="more">>>></a>
+      </div>
+      <div class="notice2 left">
+         <ul class="ranklist">
+             <li>
+             <img src="/default2010B/twt1/upload/2014_11_15_22_12_35_222_3.jpg" width="224px" height="149px"/>
+             <!--<span style="float:right;">11-15</span>-->
+             <a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47973" target="_block">【双十一“剁手”季】你不知道的“双十一”</a>
+             <p><span>浏览(100)回复(0)</span></p>
+           </li>
+             <li>
+             <img src="/default2010B/twt1/upload/IMG_6589Y.jpg" width="224px" height="149px"/>
+             <!--<span style="float:right;">11-15</span>-->
+             <a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47960" target="_block">【青椒学术沙龙】安全域隐形的边界</a>
+             <p><span>浏览(57)回复(0)</span></p>
+           </li>
+             <li>
+             <img src="/default2010B/twt1/upload/IMG_1304.JPG" width="224px" height="149px"/>
+             <!--<span style="float:right;">11-15</span>-->
+             <a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47959" target="_block">求是迎新：夜空中最亮的星</a>
+             <p><span>浏览(382)回复(0)</span></p>
+           </li>
+             <li>
+             <img src="/default2010B/twt1/upload/%E6%96%B0%E6%AD%8C%E8%B5%9B3.jpg" width="224px" height="149px"/>
+             <!--<span style="float:right;">11-15</span>-->
+             <a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47958" target="_block">唱享新声：新生歌手大赛半决赛完美落幕</a>
+             <p><span>浏览(130)回复(0)</span></p>
+           </li>
+             <li>
+             <img src="/default2010B/twt1/upload/%E7%85%A7%E7%89%871.jpg" width="224px" height="149px"/>
+             <!--<span style="float:right;">11-13</span>-->
+             <a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47904" target="_block">【自强之星】宣丽燕：乐观绽放光芒&nbsp;自强成就梦想</a>
+             <p><span>浏览(595)回复(1)</span></p>
+           </li>
+             <li>
+             <img src="/default2010B/twt1/upload/_MG_670.jpg" width="224px" height="149px"/>
+             <!--<span style="float:right;">11-13</span>-->
+             <a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47908" target="_block">“计”得有你：2014年计算机学院迎新晚会</a>
+             <p><span>浏览(880)回复(0)</span></p>
+           </li>
+           </ul>
+      </div>
+    </div>
+    <div class="news2" id="news2">
+    <div id="vertical" class="scrollbox clearfix">	
+      <div class="slyWrap example2">
+   <h3>重要新闻</h3>
+         <h3>视点观察</h3>
+         <h3>缤纷北洋</h3>
+<div class="scrollbar">
+<div class="handle" style="position: absolute; top: 0px; height: 298px;"></div>
+</div>
+
+      <div class="sly" data-options="{ &quot;scrollBy&quot;: 100, &quot;startAt&quot;: 0 }" style="overflow: hidden; position: relative;">
+      
+      
+         <div class="news2-wrap" style="position: absolute; top: 0px;">
+      
+        <div class="zhongyao">
+          <ul>           
+            	
+                		    
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47977" id="top" target="_blank">巧夺职场免费午餐</a><span>11-16</span></li>
+            	
+                		    
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47975" id="top" target="_blank">北洋嘉年华 向校庆献礼</a><span>11-15</span></li>
+            	
+                		    
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47973" id="top" target="_blank">【双十一“剁手”季】你不知道...</a><span>11-15</span></li>
+            	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47972" target="_blank">冬日里的温暖：北洋艺术团走进...</a><span>11-15</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47970" target="_blank">走进国际交流项目：本科生国际...</a><span>11-15</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47960" target="_blank">【青椒学术沙龙】安全域隐形的...</a><span>11-15</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47959" target="_blank">求是迎新：夜空中最亮的星</a><span>11-15</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47958" target="_blank">唱享新声：新生歌手大赛半决赛...</a><span>11-15</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47957" target="_blank">舟行百川 港定千澜：第七期建...</a><span>11-15</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47955" target="_blank">北洋合唱团新作品音乐会：经典...</a><span>11-14</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47926" target="_blank">“益”起来 一份爱：关爱“瓷...</a><span>11-13</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47908" target="_blank">“计”得有你：2014年计算...</a><span>11-13</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47905" target="_blank">角力亚太 共铸辉煌</a><span>11-13</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47904" target="_blank">【自强之星】宣丽燕：乐观绽放...</a><span>11-13</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47899" target="_blank">舌尖上的舞蹈 同传大师与你谈...</a><span>11-12</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47888" target="_blank">辩理求是 论道启真：“OPP...</a><span>11-12</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47887" target="_blank">用音乐取暖 今夜不孤单</a><span>11-12</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47870" target="_blank">理院迎新：让我在最好的岁月里...</a><span>11-11</span></li>
+                	
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47838" target="_blank">石述思：一个社会的悲伤与勇气</a><span>11-10</span></li>
+                          </ul>      	
+        </div>
+        <div class="shidian">       
+          <ul>                 
+                        
+                		    
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47932" id="top" target="_blank">北洋大讲堂：建立中美之间的新...</a><span>11-13</span></li>
+                        
+                		    
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47921" id="top" target="_blank">不变的志愿心</a><span>11-13</span></li>
+                        
+                		    
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47920" id="top" target="_blank">青年文化论坛:转基因之惑</a><span>11-13</span></li>
+                        
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47856" target="_blank">“‘实事求是’是做人做事及做...</a><span>11-11</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47855" target="_blank">我校杰出校友师昌绪院士逝世</a><span>11-11</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47812" target="_blank">【研究生素质立项】“激情化研...</a><span>11-08</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47811" target="_blank">“松正杯”机器人节系列比赛成...</a><span>11-08</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47810" target="_blank">“览英华卓荦 思努力追踪” ...</a><span>11-08</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47809" target="_blank">求是学部2013级电工电子2...</a><span>11-08</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47808" target="_blank">13级环科2班成功开展团日活...</a><span>11-08</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47807" target="_blank">留学那点“小”事：天大勤助及...</a><span>11-08</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47797" target="_blank">含英班二期“我读书，我炫酷”...</a><span>11-07</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47727" target="_blank">天南舞会 心与心的约会</a><span>11-03</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47686" target="_blank">教你找兼职：天大兼职经验交流...</a><span>11-02</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47651" target="_blank">【探秘新校区】之特色风光</a><span>10-30</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47592" target="_blank">67名2014级新生获批成为...</a><span>10-28</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47591" target="_blank">天津大学“85后”工科男老师...</a><span>10-28</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47566" target="_blank">领略企业家风采 展现大学生英...</a><span>10-26</span></li>
+                            
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47552" target="_blank">携手班建 抒怀北洋</a><span>10-26</span></li>
+                          </ul>
+        </div>
+        <div class="binfen">        
+          <ul>                    
+                   
+                		    
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47976" id="top" target="_blank">和世界谈谈你的零花钱</a><span>11-16</span></li>
+	
+                   
+                		    
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47974" id="top" target="_blank">求是学部2014级迎新晚会圆...</a><span>11-15</span></li>
+	
+                   
+                		    
+                    <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47968" id="top" target="_blank">海船二班低年级党支部第三次会...</a><span>11-15</span></li>
+	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47967" target="_blank">敞开心扉，你我同行</a><span>11-15</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47966" target="_blank">启蒙——记13级土木工程丙班...</a><span>11-15</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47965" target="_blank">“松正杯”机器人节系列比赛之...</a><span>11-15</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47964" target="_blank">因为“艾” 所以爱</a><span>11-15</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47962" target="_blank">让天大的温情 守护星星的孩子</a><span>11-15</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47961" target="_blank">学习陶行知思想，为校庆挖掘精...</a><span>11-15</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47953" target="_blank">“光棍节”有我不孤单 ——教...</a><span>11-14</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47952" target="_blank">成分献血，真爱流动</a><span>11-14</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47951" target="_blank">信息学院举行研究生会举行换届...</a><span>11-14</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47950" target="_blank">天津大学青年志愿者协会第四次...</a><span>11-14</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47948" target="_blank">信息学院本科生创新创业学术报...</a><span>11-14</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47947" target="_blank">[学生宿舍卫生安全活动月]之...</a><span>11-14</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47946" target="_blank">信息学院2012级本科生“防...</a><span>11-14</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47945" target="_blank">建工学院2014级硕士生硕士...</a><span>11-14</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47944" target="_blank">聚焦话筒 青春飞扬 —记20...</a><span>11-14</span></li>
+    	
+                   
+                <li><a href="http://news.twt.edu.cn/?c=default&a=pernews&id=47943" target="_blank">天津大学机械工程学院关于20...</a><span>11-14</span></li>
+    	
+                      </ul>
+        </div>
+      </div>
+      </div>
+</div>
+
+    </div><!--vertical end-->
+
+    </div>
+    <div class="loading none"></div>
+  </div>
+</div>
+<!-- News End-->
+
+<!-- Education-->
+<!-- Including imageView jQuery plugin -->
+<script>
+$(function() {
+    $('#imageView_container').imageView({width: 630, height:220});
+});
+</script>
+<div class="Edu column" id="edu">
+  <div class="container">
+      <h2 class="column-title">
+        <a href="javascript:void(0)">教育 Education</a>
+</h2>
+    <div class="dangJian left">
+      <div style="margin-bottom:10px;">
+         <h3>党建</h3>
+         <div id="imageView_container">
+            <img id="imageView" src="/default2010B/twt1/images/dangjian.jpg" rel="/default2010B/twt1/images/dangjianda.jpg" alt="" />
+        </div>
+      </div>
+      <div class="dOne left ranklist2">
+        <a href="http://www.twt.edu.cn/newparty/" style="color:#F00;" class="more" target="_blank">>>></a>
+        <h5>1.党校通知</h5>
+         <ul>
+       <li><a href="http://www.twt.edu.cn/newparty/?page=notification&do=detail&notice_id=257" id="red" target="_blank">第27期预备党员党校结业成绩查询通知</a><span>2014-11-10</span></li>
+       <li><a href="http://www.twt.edu.cn/newparty/?page=notification&do=detail&notice_id=256" id="red" target="_blank">第43期入党申请人党校结业考试</a><span>2014-10-24</span></li>
+       <li><a href="http://www.twt.edu.cn/newparty/?page=notification&do=detail&notice_id=255" id="red" target="_blank">第十七期学生党支部书记培训班课程通告</a><span>2014-10-22</span></li>
+       <li><a href="http://www.twt.edu.cn/newparty/?page=notification&do=detail&notice_id=252" target="_blank">第27期学生预备党员党校报名、选课通知</a><span>2014-09-25</span></li>
+       <li><a href="http://www.twt.edu.cn/newparty/?page=notification&do=detail&notice_id=251" target="_blank">第42期入党申请人党校结业考试座位图</a><span>2014-09-23</span></li>
+       <li><a href="http://www.twt.edu.cn/newparty/?page=notification&do=detail&notice_id=231" target="_blank">党建系统新功能</a><span>2013-11-10</span></li>
+       <li><a href="http://www.twt.edu.cn/newparty/?page=notification&do=detail&notice_id=82" target="_blank"> 关于开展第二批优秀学生党建立项评选活动的通知</a><span>0000-00-00</span></li>
+          </ul>
+      </div>
+      <div class="dTwe left ranklist2">
+        <a href="http://www.twt.edu.cn/ihome/space.php?do=event&view=recommend" style="color:#F00;" class="more" target="_blank">>>></a>
+        <h5>2.支部活动预告</h5>
+        <ul>
+            <!--test-->
+        
+   <li><a href="http://www.twt.edu.cn/ihome/event-id-3011" id="red" target="_blank" style="float:left;line-height:1.8;width:200px;height:20px;overflow:hidden;">[特色组织生活]探讨时事，共商未来</a><span id="red">2014-11-15</span></li>
+            <!--test-->
+        
+   <li><a href="http://www.twt.edu.cn/ihome/event-id-3010" id="red" target="_blank" style="float:left;line-height:1.8;width:200px;height:20px;overflow:hidden;">[特色组织生活]天津自然博物馆一游</a><span id="red">2014-11-14</span></li>
+            <!--test-->
+        
+   <li><a href="http://www.twt.edu.cn/ihome/event-id-3009" id="red" target="_blank" style="float:left;line-height:1.8;width:200px;height:20px;overflow:hidden;">[特色组织生活]13级硕士材料化学第一党支部发展大会</a><span id="red">2014-11-13</span></li>
+          
+      <!--test-->
+   <li><a href="http://www.twt.edu.cn/ihome/event-id-3008" target="_blank" style="float:left;line-height:1.8;width:200px;height:20px;overflow:hidden;">红色香山之行</a><span>2014-11-10</span></li>
+          
+      <!--test-->
+   <li><a href="http://www.twt.edu.cn/ihome/event-id-3007" target="_blank" style="float:left;line-height:1.8;width:200px;height:20px;overflow:hidden;">[特色组织生活]天津欢乐谷之行</a><span>2014-11-10</span></li>
+          
+      <!--test-->
+   <li><a href="http://www.twt.edu.cn/ihome/event-id-3006" target="_blank" style="float:left;line-height:1.8;width:200px;height:20px;overflow:hidden;">化工2013硕工艺一班羽毛球赛</a><span>2014-11-10</span></li>
+          
+      <!--test-->
+   <li><a href="http://www.twt.edu.cn/ihome/event-id-3005" target="_blank" style="float:left;line-height:1.8;width:200px;height:20px;overflow:hidden;">[特色争创活动]党史校情趣味竞赛</a><span>2014-11-09</span></li>
+ 
+        </ul>
+      </div>
+      <div class="dThree left ranklist2">
+        <a href="http://www.twt.edu.cn/ihome/space.php?do=event&view=recommend" style="color:#F00;" class="more" target="_blank">>>></a>
+        <h5>3.特色活动</h5>
+        <ul class="actImg">
+    <li><a href="#"><img src="/default2010B/twt1/upload/W020131012631672220121.jpg" width="102" height="76" border="0" /></a><P></P></li>
+    <li><a href="#"><img src="/default2010B/twt1/upload/W020131017371164147682.jpg" width="102" height="76" border="0" /></a><P></P></li>
+    <li><a href="#"><img src="/default2010B/twt1/upload/W020131018406506088496.jpg" width="102" height="76" border="0" /></a><P></P></li>
+ 
+          
+        </ul>
+        <div class="clearfix"></div>
+        <ul class="dThreeLi">
+          <li><a href="#" target="_blank">天津大学“示范性学生党支部”重点建设项目展示</a><span>[  达标创优  ]</span></li>
+          <li><a href="#" target="_blank">“强基创优，勇当先锋”学生党组织建设立项活动优秀成果展示</a><span>[  党建立项  ] </span></li>
+          <li><a href="#" target="_blank">关于电气与自动化工程学院全面推行学生党员“一帮一，结对子，争先进，共成长”互助互学主题活动工作计划</a><span>[    一帮一    ]</span></li>
+          <li><a href="#" target="_blank">参观历史瑰宝 提高党员修养</a><span>[  最佳党日  ] </span></li>
+          <li><a href="#" target="_blank">进一步丰富、美化学生党员服务站</a><span>[    党员服务站    ]</span></li>
+        </ul>
+      </div>
+      <div class="dFour left">
+        <a href="http://www.twt.edu.cn/ihome/party-view-hot-fieldid-0-orderby-rate" style="color:#F00;" class="more">>>></a>
+        <h5>4.支部达标排行</h5>
+        <table>
+          <tr id="red">
+            <td>1.机械工程学院  </td>
+            <td style="text-align:right;">达标率：15%</td>
+            <td style="text-align:right;">达标支部数：5</td>
+          </tr>
+          <tr id="red">
+            <td>2.精密仪器与光...  </td>
+            <td style="text-align:right;">达标率：16%</td>
+            <td style="text-align:right;">达标支部数：6</td>
+          </tr>
+          <tr id="red">
+            <td>3.电气与自动化...</td>
+            <td style="text-align:right;">达标率：0%</td>
+            <td style="text-align:right;">达标支部数：0</td>
+          </tr>
+          <tr>
+            <td>4.电子信息工程... </td>
+            <td style="text-align:right;">达标率：23%</td>
+            <td style="text-align:right;">达标支部数：8</td>
+          </tr>
+          <tr>
+            <td>5.建筑工程学院  </td>
+            <td style="text-align:right;">达标率：2%</td>
+            <td style="text-align:right;">达标支部数：1</td>
+          </tr>
+          <tr>
+            <td>6.建筑学院  </td>
+            <td style="text-align:right;">达标率：17%</td>
+            <td style="text-align:right;">达标支部数：4</td>
+          </tr>
+          <tr>
+            <td>7.化工学院  </td>
+            <td style="text-align:right;">达标率：11%</td>
+            <td style="text-align:right;">达标支部数：9</td>
+          </tr>
+          <tr>
+            <td>8.材料科学与工... </td>
+            <td style="text-align:right;">达标率：7%</td>
+            <td style="text-align:right;">达标支部数：3</td>
+          </tr>
+          <tr>
+            <td>9.管理学院  </td>
+            <td style="text-align:right;">达标率：4%</td>
+            <td style="text-align:right;">达标支部数：2</td>
+          </tr>
+          <tr>
+            <td>10.理学院  </td>
+            <td style="text-align:right;">达标率：24%</td>
+            <td style="text-align:right;">达标支部数：5</td>
+          </tr>
+        </table>
+      </div>
+    <div class="clearfix"></div>
+    </div>
+    <div class="other left">
+      <a href="http://psych.tju.edu.cn/index.php" style="color:#F00;" class="more" target="_blank">>>></a>
+      <h3 class="h3_1">心理辅导</h3>
+      <div>
+        <h5>1.通知公告</h5>
+        <ul class="ranklist2">
+  <li><span></span><a href="http://psych.tju.edu.cn/notice.php?id=83" target="_blank">天津大学第八届“十佳心理委员”评选拉开帷幕</a></li>
+  <li><span></span><a href="http://psych.tju.edu.cn/notice.php?id=82" target="_blank">十一期间心理咨询及治疗服务暂停公告</a></li>
+  <li><span></span><a href="http://psych.tju.edu.cn/notice.php?id=81" target="_blank">周二下午《大学生心理健康》课组长名单（2014-2015学年第一学期）</a></li>
+  <li><span></span><a href="http://psych.tju.edu.cn/notice.php?id=80" target="_blank">2014下半年心理咨询网上预约服务开通啦</a></li>
+  <li><span></span><a href="http://psych.tju.edu.cn/notice.php?id=79" target="_blank">2014下半年心理咨询服务正式开始啦</a></li>
+        </ul>
+        <h5>2.心理工作坊</h5>
+        <ul class="ranklist3" style="margin-bottom:10px;">
+               <li><a href="http://psych.tju.edu.cn/xlgzf/notice.php?id=57" target="_blank">第三期心灵成长工作坊招生通知</a></li>
+                       <li><a href="http://psych.tju.edu.cn/xlgzf/notice.php?id=58" target="_blank">第三期心灵成长工作坊课程简介</a></li>
+                       <li><a href="http://psych.tju.edu.cn/xlgzf/notice.php?id=56" target="_blank">第三拨心灵成长工作坊开课通知</a></li>
+                       <li><a href="http://psych.tju.edu.cn/xlgzf/notice.php?id=55" target="_blank">第二拨心灵成长工作坊开课通知</a></li>
+                       <li><a href="http://psych.tju.edu.cn/xlgzf/notice.php?id=54" target="_blank">    温馨提示：本学期心灵工作坊开课通知</a></li>
+             
+        </ul>
+      </div>
+      <a href="http://www.twt.edu.cn/gongpai/" style="color:#F00;" class="more" target="_blank">>>></a>
+      <h3 class="h3_2">留学信息</h3>
+      <ul class="ranklist3" style="margin-bottom:10px;">
+                    <li><a href="http://www.twt.edu.cn/gongpai/news1.php?ID=643" target="_blank">荷兰伊拉斯姆斯大学CSC项目通知</a></li>
+                           <li><a href="http://www.twt.edu.cn/gongpai/news1.php?ID=641" target="_blank">新加坡国立大学CSC宣讲通知</a></li>
+                           <li><a href="http://www.twt.edu.cn/gongpai/news1.php?ID=640" target="_blank">日本九州大学2015年CSC项目tongzhi </a></li>
+                           <li><a href="http://www.twt.edu.cn/gongpai/news1.php?ID=639" target="_blank">2014博士生教育国际交流会通知</a></li>
+                           <li><a href="http://www.twt.edu.cn/gongpai/news1.php?ID=637" target="_blank">英国赫尔大学2015年CSC项目通知</a></li>
+                      
+       </ul>
+       <div class="otherIcon left">
+         <a href="http://www.twt.edu.cn/orgs/xinli/" target="_blank"><img src="/default2010B/twt1/img/other1.png" border="0" /></a>
+         <a href="http://www.twt.edu.cn/orgs/xinli/" id="iconA" target="_blank">新生心理测试</a>
+       </div>
+       <div class="otherIcon left">
+         <a href="http://www.twt.edu.cn/orgs/scholarship/" target="_blank"><img src="/default2010B/twt1/img/other2.png" border="0" /></a>
+         <a href="http://www.twt.edu.cn/orgs/scholarship/" id="iconA" target="_blank">奖学金管理系统</a>
+       </div>
+       <div class="otherIcon left">
+         <a href="http://www.twt.edu.cn/theory/thquiz/"target="_blank"><img src="/default2010B/twt1/img/other3.png" border="0" /></a>
+         <a href="http://www.twt.edu.cn/theory/thquiz/" id="iconA" target="_blank">形势政策理论考试</a>
+       </div>
+    </div>
+  </div>
+</div>
+<!-- Education End-->
+
+<!-- Service -->
+<div class="Service column" id="service">
+    <div class="container">
+        <h2 class="column-title">
+            <a href="http://service.twt.edu.cn">服务 Service</a>
+        </h2>
+     <div class="SerOne left">
+       <div class="picnav0 ranklist2">
+          <h3>就业服务</h3>
+          <ul>
+                  <li><a href="http://job.tju.edu.cn/zhaopinxinxi_detail.php?id=31683" target="_blank">北京选调报名通知【11月20日...</a><span class="right">2014-11-14</span></li>
+                           <li><a href="http://job.tju.edu.cn/zhaopinxinxi_detail.php?id=31682" target="_blank">辽宁省政法机关（备注：收的简历...</a><span class="right">2014-11-14</span></li>
+                           <li><a href="http://job.tju.edu.cn/zhaopinxinxi_detail.php?id=31681" target="_blank">2015浙江裕华木业有限公司（...</a><span class="right">2014-11-14</span></li>
+                           <li><a href="http://job.tju.edu.cn/zhaopinxinxi_detail.php?id=31680" target="_blank">豪迈集团―青岛分公司招聘简章</a><span class="right">2014-11-14</span></li>
+                           <li><a href="http://job.tju.edu.cn/zhaopinxinxi_detail.php?id=31679" target="_blank">江苏华语办公设备有限公司招聘简...</a><span class="right">2014-11-14</span></li>
+                           <li><a href="http://job.tju.edu.cn/zhaopinxinxi_detail.php?id=31678" target="_blank">浙江海洋学院2015年诚聘海内...</a><span class="right">2014-11-14</span></li>
+                  
+          </ul>
+       </div>
+       <div class="service1 showpic">
+         <a href="http://tv.tju.edu.cn/" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon1.png" border="0" />IPTV</a>
+         <span></span>
+         <div class="jieShao1 jieShaoDiv"><p>每个月的流量包不够看各种直播？IPTV绝对是你不应错过的选择！</p></div>
+         
+       </div>
+       <div class="service2 showpic">
+         <a href="http://www.twt.edu.cn/service/study_room.php" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon2.png" border="0" />自习室查询</a>
+         <span></span>
+         <div class="jieShao2 jieShaoDiv"><p>天大的校风很大，学风也不错哦~自习吗？看看哪里有自习室吧？</p></div>
+       </div>
+       <div class="service3 showpic">
+         <a href="http://www.twt.edu.cn/service/index.php" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon3.png" border="0" />失物招领</a>
+         <span></span>
+         <div class="jieShao2 jieShaoDiv"><p>每天刷人人找失物，不怕遗漏信息吗？失物招领平台帮助你！</p></div>
+       </div>
+       <div class="service4 showpic">
+         <a href="http://www.twt.edu.cn/suguan/" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon4.png" border="0" />宿舍服务</a>
+         <span></span>
+         <div class="jieShao4 jieShaoDiv"><p>各种与宿舍相关的表单一应俱全，有需要，就戳进来吧！</p></div>
+       </div>
+       <div class="service5 showpic">
+         <a href="http://nc.tju.edu.cn/query/ipFlow.asp" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon5.png" border="0" />一键流量</a>
+         <span></span>
+         <div class="jieShao1 jieShaoDiv"><p>不知道自己用了多少的校园网流量？轻松一点你就知道！</p></div>
+       </div>
+       <div class="service6 showpic">
+         <a href="http://www.lib.tju.edu.cn/n17397/index.html" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon6.png" border="0" />图书馆</a>
+         <span></span>
+         <div class="jieShao2 jieShaoDiv"><p>快速链接到天大电子图书馆！</p></div>
+       </div>
+       <div class="service7 showpic">
+         <a href="http://www.twt.edu.cn/service/index.php" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon7.png" border="0" />老乡查询</a>
+         <span></span>
+         <div class="jieShao1 jieShaoDiv"><p>学弟学妹在哪里？点这里！</p></div>
+       </div>
+     </div>
+    <div style="width:387px; float:left;">
+     <div class="Ser_shoujiduan showpic">
+         <a href="http://mobile.twt.edu.cn" class="showbox" target="_blank"><img src="/default2010B/twt1/images/resourceIcon12.png" border="0" />微北洋APP</a>
+         <span></span>
+         <div class="jieShao4 jieShaoDiv"><p>最新版天外天服务手机APP，天外天服务，伴随你。</p></div>
+     </div>
+     <div class="SerTwe left">
+       <div class="service8 showpic">
+         <a href="http://www.twt.edu.cn/vote/index.php" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon8.png" border="0" />投票系统</a>
+         <span></span>
+         <div class="jieShao2 jieShaoDiv"><p>人人投票刷赞？外网投票服务？为什么不试试天外天投票系统？</p></div>
+       </div>
+      
+       <div class="service10 showpic">
+         <a href="http://www.twt.edu.cn/qinzhu/" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon10.png" border="0" />勤工助学</a>
+         <span></span>
+         <!--<div class="jieShao2 jieShaoDiv"><p>找家教、查校内岗，这里就对了！</p></div>-->
+ <div class="jieShao2 jieShaoDiv"><p>服务贫困生，感受家温暖</p></div>
+       </div>
+     </div>
+     <div class="SerThr left">
+       <div class="service11 showpic">
+         <a href="http://www.twt.edu.cn/service/gpa.php" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon11.png" border="0" />GPA查询</a>
+         <span></span>
+         <div class="jieShao1 jieShaoDiv"><p>还在使用办公网查询成绩计算GPA？你落伍了！</p></div>
+       </div>
+       
+       <div class="service13 showpic">
+         <a href="http://www.tju.edu.cn/xxgk/xydy/maps/" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon13.png" border="0" />校内地图</a>
+         <span></span>
+         <div class="jieShao2 jieShaoDiv"><p>来了天大这么久，如果还找不到某栋教学楼的话，不妨试试看。</p></div>
+       </div>
+       <div class="service14 showpic">
+         <a href="http://www.twt.edu.cn/tblog/" class="showbox" target="_blank"><img src="/default2010B/twt1/img/resourceIcon14.png" border="0" />TWT博客</a>
+         <span></span>
+         <div class="jieShao1 jieShaoDiv"><p>想了解天外天的发展过程吗？来这看看！</p></div>
+       </div>
+     </div>
+    </div>
+     <div class="clearfix"></div>
+   </div>
+</div>
+<!-- Service End -->
+
+<!-- Living -->
+<div class="living column">
+    <div class="container">
+    <h2 class="column-title">
+        <a href="#">生活 Live</a>
+    </h2>
+    <p>
+        <a href="#"><img src="/default2010B/twt1/img/twtshequ.png" height="45" /></a>
+    </p>
+    <div class="icenter-container">
+      <div class="journal">
+       <a href="http://www.twt.edu.cn/ihome/space.php?do=blog&view=all&orderby=hot&day=7" style="color:#4d8201;" class="more">>>></a>
+       <h3>辅导员日志</h3>
+       <ul class="ranklist5 ranklist2">
+                  <li>
+             <span>张春香</span>
+             <a href="http://www.twt.edu.cn/ihome/space.php?uid=79852&do=blog&id=13096" id="green" target="_blank">致我们必会怀念的四年</a>
+     <p>&nbsp&nbsp&nbsp&nbsp09信息的同学们：
+
+四年的时光匆匆溜去，和你们仅仅相处一年的印记却会永远刻在我的心里； 四年里，我在家庭和事业中寻找平衡，你们在爱情和...</p>
+           </li>
+                  <li>
+             <span>张春香</span>
+             <a href="http://www.twt.edu.cn/ihome/space.php?uid=79852&do=blog&id=12472" id="green" target="_blank">生命的出口</a>
+           </li>
+                  <li>
+             <span>刘旸</span>
+             <a href="http://www.twt.edu.cn/ihome/space.php?uid=118266&do=blog&id=12372" id="green" target="_blank">【转】巴赫的《十二平均律曲集》介绍</a>
+           </li>
+                  <li>
+             <span>刘旸</span>
+             <a href="http://www.twt.edu.cn/ihome/space.php?uid=118266&do=blog&id=11865" id="green" target="_blank">奥地利作曲家莫扎特的生平及其作品简介</a>
+           </li>
+                  <li>
+             <span>刘玉玮</span>
+             <a href="http://www.twt.edu.cn/ihome/space.php?uid=47970&do=blog&id=11731" id="green" target="_blank">24期网上理论答题！</a>
+           </li>
+                  <li>
+             <span>张春香</span>
+             <a href="http://www.twt.edu.cn/ihome/space.php?uid=79852&do=blog&id=11717" id="green" target="_blank">杯子，还是湖泊</a>
+           </li>
+                  <li>
+             <span>王颖</span>
+             <a href="http://www.twt.edu.cn/ihome/space.php?uid=48007&do=blog&id=11709" id="green" target="_blank">关于对材料学院全体学生党员进行理论考核的通知（2012-2013学年（1））</a>
+           </li>
+                  <li>
+             <span>刘旸</span>
+             <a href="http://www.twt.edu.cn/ihome/space.php?uid=118266&do=blog&id=11478" id="green" target="_blank">舒歌群与天南大学子畅谈研究生为学与为人</a>
+           </li>
+                  <li>
+             <span>尹伟</span>
+             <a href="http://www.twt.edu.cn/ihome/space.php?uid=79851&do=blog&id=11375" id="green" target="_blank">随  笔</a>
+           </li>
+                  <li>
+             <span>张春香</span>
+             <a href="http://www.twt.edu.cn/ihome/space.php?uid=79852&do=blog&id=11355" id="green" target="_blank">一个在日本工作的同学刚刚发来的消息</a>
+           </li>
+          
+       </ul>
+      </div>
+      <div class="act">
+       <div>
+        <a href="http://www.twt.edu.cn/ihome/home-view-all" style="color:#4d8201;" class="more">>>></a>
+        <h3>最新动态</h3>
+        <script src="http://www.twt.edu.cn/ihome/js.php?id=5"></script>
+       </div>
+      </div>
+      <div class="vote">
+        <a href="http://www.twt.edu.cn/vote/index.php?mod=index&code=index_end" style="color:#4d8201;" class="more" target="_blank">>>></a>
+        <h3>热门投票</h3>
+        <ul class="ranklist4">
+               <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=536" style="font-size:12px;" class="a_color" target="_blank">天津大学第七届“我心目中的好导...</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=533" style="font-size:12px;" class="a_color" target="_blank">第八届“自强之星”网络投票</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=510" style="font-size:12px;" class="a_color" target="_blank">【第六届方寸流年摄影大赛】决赛...</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=503" style="font-size:12px;" class="a_color" target="_blank">海棠节明信片评选</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=502" style="font-size:12px;" class="a_color" target="_blank">天津大学2013年候选新闻大事...</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=422" style="font-size:12px;" class="a_color" target="_blank">第六届“我心目中的好导师”网络...</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=420" style="font-size:12px;" class="a_color" target="_blank">校勤助第七届“自强之星”网络投...</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=419" style="font-size:12px;" class="a_color" target="_blank">天津大学2013年校园心理情景...</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=418" style="font-size:12px;" class="a_color" target="_blank">天津大学2013年校园心理情景...</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=401" style="font-size:12px;" class="a_color" target="_blank">天津大学“研途杯”学生社会实践...</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=400" style="font-size:12px;" class="a_color" target="_blank">天津大学研究生会主席团竞选第二...</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=387" style="font-size:12px;" class="a_color" target="_blank">天津大学本科生宿舍供电制度方案...</a></li>
+                       <li> <a href="http://twt.tju.edu.cn/vote/index.php?mod=vote_content&id=379" style="font-size:12px;" class="a_color" target="_blank">天津大学第五届研究生“我心目中...</a></li>
+           
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="liveFenlei">
+     <ul>
+       <li style="background:url(/default2010B/twt1/img/service7.jpg);" >
+         <a href="http://disk.twt.edu.cn/" target="_blank"><img src="/default2010B/twt1/img/liveIcon1.png" border="0"/><span>网盘</span></a>
+       </li>
+      <li style="background:url(/default2010B/twt1/img/live03.jpg);" >
+         <a href="http://mall.twt.edu.cn/" target="_blank"><img src="/default2010B/twt1/img/liveIcon3.png" border="0" /><span>商城</span></a>
+      </li>
+      <li style="background:url(/default2010B/twt1/img/service13.jpg);" >
+         <a href="http://www.twt.edu.cn/ihome/shijian/" target="_blank"><img src="/default2010B/twt1/img/liveIcon4.png" border="0" /><span>社会实践</span></a>
+      </li>
+      <li style="background:url(/default2010B/twt1/img/live05.jpg);" >
+         <a href="http://www.twt.edu.cn/ihome/" target="_blank"><img src="/default2010B/twt1/img/liveIcon5.png" border="0" /><span>TWT社区</span></a>
+      </li>
+      <li style="background:url(/default2010B/twt1/img/live06.jpg);" >
+         <a href="http://mobile.twt.edu.cn" target="_blank"><img src="/default2010B/twt1/img/liveIcon6.png" border="0" /><span>微北洋</span></a>
+      </li>
+     </ul>
+    </div>
+  </div>
+</div>
+<!-- Living End -->
+<!-- 友情链接 -->
+<div class="youqinglianjie">
+    <div class="lianjie1">
+        <h3>校内导航</h3>
+        <p>
+                                                        <a href="http://www.tju.edu.cn/" target="_blank">天津大学</a>
+                                                    |                <a href="http://e.tju.edu.cn/Main/init.do" target="_blank">天津大学办公网</a>
+                                                    |                <a href="http://fire.space.twtstudio.com/" target="_blank">消防教育网</a>
+                                                    |                <a href="http://nc.tju.edu.cn/index.html" target="_blank">网络中心</a>
+                                                    |                <a href="http://www.lib.tju.edu.cn/n17397/index.html" target="_blank">图书馆</a>
+                                                    |                <a href="http://gs.tju.edu.cn/" target="_blank">研究生院</a>
+                                                    |                <a href="http://mba.tju.edu.cn/" target="_blank">天津大学MBA、MPA教育中心</a>
+                                                    |                <a href="http://gs.tju.edu.cn/report/" target="_blank">研究生学术论坛</a>
+                                                    |                <a href="http://www.twt.edu.cn/zhaoling/" target="_blank">失物启事</a>
+                                                    |                <a href="http://coder.twtstudio.com/?page=twt&do=survey" target="_blank">天外天纳新系统</a>
+                                                    |                <a href="http://www.twt.edu.cn/suguan/" target="_blank">宿舍管理系统</a>
+                                                    |                <a href="http://theory.people.com.cn/GB/40557/182220/index.html" target="_blank">读书园地</a>
+                                                    |                <a href="http://www.lib.tju.edu.cn/n17397/n17496/n17724/53161.html" target="_blank">常用数据库</a>
+                                                    |                <a href="http://219.243.39.24/wctju3/index1.aspx" target="_blank">财务信息网</a>
+                                                    |                <a href="http://sbc.tju.edu.cn/" target="_blank">天津大学设备处</a>
+                                                    |                <a href="http://job.tju.edu.cn/" target="_blank">天津大学就业指导中心</a>
+                                                    |                <a href="http://sbc.tju.edu.cn/CNA/index.html" target="_blank">天津大学职业导航协会</a>
+                                                    |                <a href="http://www.moe.gov.cn/" target="_blank">中华人民共和国教育部</a>
+                                                    |                <a href="http://www.univs.cn/" target="_blank">中国大学生在线</a>
+                                </p>
+    </div>
+    <div class="lianjie2">
+        <p>
+            <a href="http://coder.twtstudio.com" target="_blank">关于我们</a>
+            -
+            <a href="http://coder.twtstudio.com/?page=twt&do=survey" target="_blank">加入我们</a>
+            -
+            <a href="http://www.twt.edu.cn/aboutus/index.php?id=connect" target="_blank">联系方式</a>
+        </p>
+        <p>&hearts; 天外天工作室 ©2000-2014 津ICP备000017号</p>
+    </div>
+</div>
+<!-- 友情链接 -->
+
+<!-- 返回顶部 -->
+<button id="ScrollToTop" class="Offscreen" type="button">&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;</button>
+<script>
+$(document).ready(function(){
+ScrollToTop.setup();
+
+  // 占位符项目来填充列表的功能
+  function populate(container, count, offset){
+    var output = '';
+    offset = isNaN(offset) ? 0 : offset;
+    for(var i = 0; i<count; i++ ){
+      output += '<li>'+(offset+i)+'</li>';
+    }
+    return $(output).appendTo(container);
+  }
+
+  // 填充列表项
+  $('ul[data-items]').each(function(i,e){
+    var items = parseInt($(e).data('items'), 10);
+    populate(e, items);
+  });
+
+  // 主要调用部分
+  $(document).on('activated',function(event){
+    var section = $('.scrollbox'),
+        frame = section.find('.frame'),
+        ul = frame.find('ul').eq(0),
+        scrollbar = section.find('.scrollbar'),
+        buttons = section.find('.controlbar [data-action]');
+
+    populate(ul, 10);
+
+    // 控制
+    buttons.on('click',function(e){
+      var action = $(this).data('action');
+      switch(action){
+      case 'reset':
+        frame.sly('toStart');
+        setTimeout(function(){
+          ul.find('li').slice(10).remove();
+          frame.sly('reload');
+        }, 200);
+        break;
+      default:
+        frame.sly(action);
+      }
+    });
+
+    section.find(".slyWrap").each(function(i,e){
+      var cont = $(this),
+          frame = cont.find(".sly"),
+          slidee = frame.find("ul"),
+          scrollbar = cont.find(".scrollbar"),
+          pagesbar = cont.find(".pages"),
+          options = frame.data("options"),
+          controls = cont.find(".controls"),
+          prevButton = controls.find(".prev"),
+          nextButton = controls.find(".next"),
+          prevPageButton = controls.find(".prevPage"),
+          nextPageButton = controls.find(".nextPage");
+
+      options = $.extend({},options,{
+        scrollBar: scrollbar,
+        pagesBar: pagesbar,
+        prev: prevButton,
+        next: nextButton,
+        prevPage: prevPageButton,
+        nextPage: nextPageButton,
+        disabledClass: 'btn-disabled'
+      });
+
+      var newsGroupNum = 1; 
+      frame.sly( options );
+      frame.on('sly:moveEnd',function(e, p, i, r){
+        if(p.cur==p.max){
+          ajaxLoad(newsGroupNum,success);
+        }
+      });
+
+      function success(){
+        $(".loading").addClass("none");
+        frame.sly('reload');
+        newsGroupNum++;        
+      }
+
+      cont.find("button").click(function(){
+        var action = $(this).data('action'),
+            arg = $(this).data('arg');
+        switch(action){
+        case 'add':
+          slidee.append(slidee.children().slice(-1).clone().removeClass().text(function(i,text){
+            return text/1 + 1;
+          }));
+          frame.sly('reload');
+          break;
+        case 'remove':
+          slidee.find("li").slice(-1).remove();
+          frame.sly('reload');
+          break;
+        default:
+          frame.sly(action, arg);
+        }
+      });
+    });
+  }).trigger('activated');
+
+  /*
+  * ajax加载新闻
+  * @paramNumber index 要获取的新闻组号
+  */
+  // var  = 0;
+  function ajaxLoad(index, callback){
+    //index为要获取的新闻的组号，从1开始，每组返回20条新闻
+    //返回数据格式参照本地测试的data变量
+    //var url = "http://twt.tju.edu.cn/ajaxGetNews.php?q="+index;
+    var url = "http://www.twt.edu.cn/default2010B/twt1/data/ajax-data.php?q="+index;
+    $(".loading").removeClass("none");
+
+    $.ajax({
+      type: "GET",
+      url: url,
+      //data:"num="++,
+      success: function (data) {
+
+        //setTimeout(a,3000);
+        a();
+        function a(){
+          eval("data="+data);
+
+          var l = data.zhongyao.length;
+          for(var i=0;i<l;i++){
+            $(".zhongyao ul").append("<li><a href='" +data.zhongyao[i][1]+ "'>" +data.zhongyao[i][0]+
+                "</a><span>" +data.zhongyao[i][2]+ "</span></li>");
+            $(".shidian ul").append("<li><a href='" +data.shidian[i][1]+ "'>" +data.shidian[i][0]+
+                "</a><span>" +data.shidian[i][2]+ "</span></li>");
+            $(".binfen ul").append("<li><a href='" +data.binfen[i][1]+ "'>" +data.binfen[i][0]+
+                "</a><span>" +data.binfen[i][2]+ "</span></li>");
+          }
+
+          callback();
+        }
+      }
+    });  
+  }
+
+  /*
+  * ajax加载新闻
+  * @paramNumber index 要获取的新闻组号
+  */
+  function ajaxLoad1(index,callback){
+
+    //index为要获取的新闻的组号，从1开始，每组返回20条新闻
+    //返回数据格式参照本地测试的data变量
+    //var url = "http://twt.tju.edu.cn/ajaxGetNews.php?q="+index;
+    var url = "http://www.twt.edu.cn/default2010B/twt1/data/ajax-data.php?q="+index;
+    $(".loading").removeClass("none");
+
+    $.ajax({
+      type: "GET",
+      url: url,
+      //data:"num="++,
+      success: function (data) {
+        //setTimeout(a,3000);
+        //console.log(data);
+        a();
+        function a(){
+          eval("data="+data);
+          var l = data.zhongyao.length;
+          for(var i=1;i<l;i++){
+            $(".zhongyao ul").append("<li><a href='" +data.zhongyao[i][1]+ "'>" +data.zhongyao[i][0]+
+                "</a><span>" +data.zhongyao[i][2]+ "</span></li>");
+            $(".shidian ul").append("<li><a href='" +data.shidian[i][1]+ "'>" +data.shidian[i][0]+
+                "</a><span>" +data.shidian[i][2]+ "</span></li>");
+            $(".binfen ul").append("<li><a href='" +data.binfen[i][1]+ "'>" +data.binfen[i][0]+
+                "</a><span>" +data.binfen[i][2]+ "</span></li>");
+          }
+          callback();
+        }
+      }
+    });  
+  }
+});
+</script>
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://elf.twtstudio.com/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "7"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><img src="http://elf.twtstudio.com/piwik.php?idsite=7&amp;rec=1" style="border:0" alt="" /></noscript>
+<!-- End Piwik -->
+</body>
+</html><!--168.122.7.37IP-->
