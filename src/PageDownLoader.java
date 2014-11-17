@@ -1,4 +1,5 @@
 import java.io.DataOutputStream;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -46,8 +47,7 @@ public class PageDownLoader {
 	private void saveToLocal(byte[] data,String filePath)
 	{
 		try {
-			DataOutputStream out=new DataOutputStream(
-					new FileOutputStream(new File(filePath)));
+			DataOutputStream out=new DataOutputStream( new FileOutputStream(new File(filePath)));
 			for(int i=0;i<data.length;i++)
 				out.write(data[i]);
 			out.flush();
@@ -73,11 +73,12 @@ public class PageDownLoader {
 			if(statusCode != HttpStatus.SC_OK){
 				System.err.println("Method failed:" + getMethod.getStatusLine());
 				filePath = null;
+			}else{
+				byte[] responseBody = getMethod.getResponseBody();
+				//InputStream responseBody = getMethod.getResponseBodyAsStream();  //=======TODO: find ways to use getResponseBodyAsStream to store files
+				filePath = "pages\\" + getFileNameByUrl(url, getMethod.getResponseHeader("Content-Type").getValue());
+				saveToLocal(responseBody, filePath);
 			}
-			byte[] responseBody = getMethod.getResponseBody();
-			//InputStream responseBody = getMethod.getResponseBodyAsStream();  //=======TODO: find ways to use getResponseBodyAsStream to store files
-			filePath = "pages\\" + getFileNameByUrl(url, getMethod.getResponseHeader("Content-Type").getValue());
-			saveToLocal(responseBody, filePath);
 		}catch(HttpException e){
 			System.out.println("please chech the provided http address!!!!!!!!");
 			e.printStackTrace();
