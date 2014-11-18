@@ -1,4 +1,4 @@
-import java.util.Set;
+
 import java.util.HashSet;
 
 import org.htmlparser.NodeFilter;
@@ -12,8 +12,9 @@ import org.htmlparser.util.ParserException;
 
 public class HtmlParser{
 
-	public static Set<String> extractLinks(String url, LinkFilter filter){
-		Set<String> links = new HashSet<String>();
+	public static HashSet<String> extractLinks(String url, LinkFilter filter){
+		HashSet<String> links = new HashSet<String>();
+		HashSet<String> names = new HashSet<String>();
 		try{
 			Parser parser = new Parser(url);
 			parser.setEncoding("gb2312");
@@ -37,28 +38,46 @@ public class HtmlParser{
 				{
 					LinkTag link = (LinkTag) tag;
 					String linkUrl = link.getLink();// get url
-					if(filter.accept(linkUrl))
+					if(filter.accept(linkUrl)){
 						links.add(linkUrl);
-				} 
+						String name = link.getLinkText();
+						names.add(name);
+					}
+				}
+//				else// <frame> 
+//				{
+//					// such as <frame src="test.html"/>
+//					String frame = tag.getText();
+//					int start = frame.indexOf("src=");
+//					frame = frame.substring(start);
+//					int end = frame.indexOf(" ");
+//					if (end == -1)
+//						end = frame.indexOf(">");
+//					String frameUrl = frame.substring(5, end - 1);
+//					if(filter.accept(frameUrl))
+//						links.add(frameUrl);
+//				}
 			}
 		}catch (ParserException e) {
 			e.printStackTrace();
 		}
-		return links;		
+		return names;		
 	}
-	//main for test
+	/**main function to test HtmlParser class
+	 * 
+	 */
 	public static void main(String[]args)
 	{
 		LinkFilter linkFilter = new LinkFilter(){
 			@Override
 			public boolean accept(String url) {
-				if(url.startsWith("http://www.bu.edu"))
+				if(url.startsWith("http://www.imdb.com/title"))
 				return true;
 			else
 				return false;
 			}
 		};
-		Set<String> links = HtmlParser.extractLinks("http://www.bu.edu", linkFilter);
+		HashSet<String> links = HtmlParser.extractLinks("http://www.imdb.com/movies-in-theaters", linkFilter);
 		for(String link : links)
 			System.out.println(link);
 	}

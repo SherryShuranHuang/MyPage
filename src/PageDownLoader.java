@@ -90,12 +90,12 @@ public class PageDownLoader {
 		return filePath;
 		
 	}
-	/**main function to test PageDownLoader class
-	 * 
-	 */
-	public static void main(String[] args){
-		PageDownLoader downpage = new PageDownLoader();
-		downpage.downloadFile("http://www.bu.edu");
-	}
+//	/**main function to test PageDownLoader class
+//	 * 
+//	 */
+//	public static void main(String[] args){
+//		PageDownLoader downpage = new PageDownLoader();
+//		downpage.downloadFile("http://www.imdb.com/movies-in-theaters/?ref_=nv_tp_inth_1");
+//	}
 }
 //test
