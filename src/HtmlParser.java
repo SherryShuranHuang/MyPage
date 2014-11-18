@@ -6,6 +6,7 @@ import org.htmlparser.Node;
 import org.htmlparser.Parser;
 import org.htmlparser.filters.NodeClassFilter;
 import org.htmlparser.filters.OrFilter;
+import org.htmlparser.tags.HeadingTag;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
@@ -14,7 +15,6 @@ public class HtmlParser{
 
 	public static HashSet<String> extractLinks(String url, LinkFilter filter){
 		HashSet<String> links = new HashSet<String>();
-		HashSet<String> names = new HashSet<String>();
 		try{
 			Parser parser = new Parser(url);
 			parser.setEncoding("gb2312");
@@ -29,6 +29,7 @@ public class HtmlParser{
 					}
 				}
 			};// act as a condition
+			
 			OrFilter linkFilter = new OrFilter(new NodeClassFilter(LinkTag.class), frameFilter);
 			// get filtered tag
 			NodeList list = parser.extractAllNodesThatMatch(linkFilter);
@@ -40,29 +41,62 @@ public class HtmlParser{
 					String linkUrl = link.getLink();// get url
 					if(filter.accept(linkUrl)){
 						links.add(linkUrl);
-						String name = link.getLinkText();
-						names.add(name);
 					}
-				}
-//				else// <frame> 
-//				{
-//					// such as <frame src="test.html"/>
-//					String frame = tag.getText();
-//					int start = frame.indexOf("src=");
-//					frame = frame.substring(start);
-//					int end = frame.indexOf(" ");
-//					if (end == -1)
-//						end = frame.indexOf(">");
-//					String frameUrl = frame.substring(5, end - 1);
-//					if(filter.accept(frameUrl))
-//						links.add(frameUrl);
-//				}
+				}else// frame tag  
+	            {  
+	                // extract link in frame src="test.html"  
+	                String frame = tag.getText();  
+	                int start = frame.indexOf("src=");  
+	                frame = frame.substring(start);  
+	                int end = frame.indexOf(" ");  
+	                if (end == -1)  
+	                    end = frame.indexOf(">");  
+	                frame = frame.substring(5, end - 1);  
+	                System.out.println(frame);  
+	            }  
+	        
 			}
 		}catch (ParserException e) {
 			e.printStackTrace();
 		}
-		return names;		
+		return links;		
 	}
+	
+	public static HashSet<String> extractNames(String url, String HeadingTagName){
+		HashSet<String> names = new HashSet<String>();
+		try{
+			Parser nameparser = new Parser(url);
+			nameparser.setEncoding("gb2312");
+//			NodeFilter aFilter = new NodeFilter(){
+//				public boolean accept(Node node){
+//					if(node.getText().contains("itemprop = \"url\"")){
+//						return true;
+//					}else{
+//						return false;
+//					}
+//				}
+//			};	
+			NodeClassFilter headingFilter =new NodeClassFilter(HeadingTag.class);
+			NodeList headingList = nameparser.extractAllNodesThatMatch(headingFilter);
+			for (int i = 0; i < headingList.size(); i++) {
+				String name = "";
+				HeadingTag headingTag=(HeadingTag)headingList.elementAt(i);
+				if(headingTag.getText().startsWith(HeadingTagName)){// h*, *=1,2,3,4,5 or 6
+					name =headingTag.toPlainTextString();//get the content in the <h*> tag
+				}
+				if(name==null){
+					continue;
+				}
+				names.add(name);
+			}
+		}catch (ParserException e) {
+			e.printStackTrace();
+		}
+		return names;	
+
+		}
+		
+	
 	/**main function to test HtmlParser class
 	 * 
 	 */
@@ -78,7 +112,9 @@ public class HtmlParser{
 			}
 		};
 		HashSet<String> links = HtmlParser.extractLinks("http://www.imdb.com/movies-in-theaters", linkFilter);
-		for(String link : links)
+		HashSet<String> names = HtmlParser.extractNames("http://www.imdb.com/movies-in-theaters", "h4");
+		
+		for(String link : names)
 			System.out.println(link);
 	}
 }
