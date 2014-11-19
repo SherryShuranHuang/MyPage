@@ -30,10 +30,6 @@ public class HtmlParser{
 			Parser parser = new Parser(url);
 			parser.setEncoding("UTF-8");
 			
-//			NodeFilter filter1 = new HasAttributeFilter("title");
-//			NodeFilter filter2 = new HasAttributeFilter("itemprop","url");
-//			AndFilter andfilter = new AndFilter(filter1,filter2);
-			
 			NodeFilter filter1 = new TagNameFilter("div");
 			NodeFilter filter2 = new HasAttributeFilter("class","title");
 			AndFilter andfilter = new AndFilter(filter1,filter2);
@@ -65,10 +61,6 @@ public class HtmlParser{
 			Parser parser = new Parser(url);
 			parser.setEncoding("UTF-8");
 			
-//			NodeFilter filter1 = new HasAttributeFilter("title");
-//			NodeFilter filter2 = new HasAttributeFilter("itemprop","url");
-//			AndFilter andfilter = new AndFilter(filter1,filter2);
-			
 			NodeFilter filter1 = new TagNameFilter(HeadingTag);
 			NodeFilter filter2 = new HasAttributeFilter("itemprop","name");
 			AndFilter andfilter = new AndFilter(filter1,filter2);
@@ -96,15 +88,7 @@ public class HtmlParser{
 		try{
 			Parser nameparser = new Parser(url);
 			nameparser.setEncoding("UTF-8");
-//			NodeFilter aFilter = new NodeFilter(){
-//				public boolean accept(Node node){
-//					if(node.getText().contains("itemprop = \"url\"")){
-//						return true;
-//					}else{
-//						return false;
-//					}
-//				}
-//			};	
+
 			NodeClassFilter headingFilter =new NodeClassFilter(HeadingTag.class);
 			NodeList headingList = nameparser.extractAllNodesThatMatch(headingFilter);
 			for (int i = 0; i < headingList.size(); i++) {
@@ -155,12 +139,6 @@ public class HtmlParser{
 			Parser Linkparser = new Parser(url);
 			Linkparser.setEncoding("UTF-8");
 			
-//			NodeFilter filter1 = new TagNameFilter("div");
-//			NodeFilter filter2 = new HasAttributeFilter("id","titleCast");
-//			NodeFilter andfilter1 = new AndFilter(filter1,filter2);
-//			
-//			NodeFilter parentFilter = new HasParentFilter(andfilter1,true);
-			
 			NodeFilter filter3 = new TagNameFilter("td");  //or span
 			NodeFilter filter4 = new HasAttributeFilter("itemprop","actor"); // or value = name
 			NodeFilter andfilter2 = new AndFilter(filter3,filter4);
@@ -202,11 +180,7 @@ public class HtmlParser{
 		try{
 			Parser ageparser = new Parser(url);
 			ageparser.setEncoding("UTF-8");
-			
-//			NodeFilter timeTagFilter = new AndFilter(  
-//					new TagNameFilter("time"), new AndFilter(  
-//							new HasAttributeFilter("datetime"),  
-//							new HasAttributeFilter("itemprop"))); 
+
 			NodeFilter filter = new HasAttributeFilter("datetime");
 			NodeList timeList = ageparser.extractAllNodesThatMatch(filter);
 			//NodeList timeList = ageparser.extractAllNodesThatMatch(timeTagFilter);
@@ -237,24 +211,24 @@ public class HtmlParser{
 	/**main function to test HtmlParser class
 	 * 
 	 */
-	public static void main(String[]args)
-	{
-		LinkFilter linkFilter = new LinkFilter(){
-			@Override
-			public boolean accept(String url) {
-				if(url.startsWith("http://www.imdb.com/"))
-				return true;
-			else
-				return false;
-			}
-		};
-		//HashSet<String> links = HtmlParser.extractLinks("http://www.imdb.com/showtimes/location?ref_=inth_ov_sh_sm", linkFilter);
-		//String link = HtmlParser.extractTheMovie("http://www.imdb.com/showtimes/title/tt1971325/?ref_=shlc_li_tt","h4");
-		//HashSet<String> names = HtmlParser.extractMovieNames("http://www.imdb.com/movies-in-theaters", "h4");
-		//String names = HtmlParser.extractMovieName("http://www.imdb.com/title/tt2245084/?ref_=inth_ov_tt", "h1");
-		int age = HtmlParser.extractAge("http://www.imdb.com/name/nm0641747/?ref_=tt_cl_t5");
-		//HashSet<String> names = HtmlParser.extractMainCast("http://www.imdb.com/title/tt2096672/?ref_=inth_ov_tt");
-		//for(int link : ages)
-			System.out.println(age);
-	}
+//	public static void main(String[]args)
+//	{
+//		LinkFilter linkFilter = new LinkFilter(){
+//			@Override
+//			public boolean accept(String url) {
+//				if(url.startsWith("http://www.imdb.com/"))
+//				return true;
+//			else
+//				return false;
+//			}
+//		};
+//		//HashSet<String> links = HtmlParser.extractLinks("http://www.imdb.com/showtimes/location?ref_=inth_ov_sh_sm", linkFilter);
+//		//String link = HtmlParser.extractTheMovie("http://www.imdb.com/showtimes/title/tt1971325/?ref_=shlc_li_tt","h4");
+//		//HashSet<String> names = HtmlParser.extractMovieNames("http://www.imdb.com/movies-in-theaters", "h4");
+//		//String names = HtmlParser.extractMovieName("http://www.imdb.com/title/tt2245084/?ref_=inth_ov_tt", "h1");
+//		int age = HtmlParser.extractAge("http://www.imdb.com/name/nm0641747/?ref_=tt_cl_t5");
+//		//HashSet<String> names = HtmlParser.extractMainCast("http://www.imdb.com/title/tt2096672/?ref_=inth_ov_tt");
+//		//for(int link : ages)
+//			System.out.println(age);
+//	}
 }

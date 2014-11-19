@@ -55,7 +55,7 @@ public class GetPageMain {
             {  
             	System.out.println("the"+ index +"th movie");
             	String movielink=HtmlParser.extractTheMovie(link,"h4");
-                    //linkDB.addUnvisited(link);  
+                //linkDB.addUnvisited(link);  
             	String moviename = HtmlParser.extractMovieName(movielink,"h1");
             	//add movie name to db
             	SqlDB.insertIntoTable("movietbl", index +",'"+ moviename+"'");

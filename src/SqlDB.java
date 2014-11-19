@@ -57,5 +57,40 @@ public class SqlDB {
 	        	System.err.println(e2.getClass().getName() + ": " + e2.getMessage()+"--cannot execute updates");
 	        }
 	}
-	        
+	
+//	public static void dbToCsv(){
+//	       java.sql.Connection setConnection = null;
+//	        Statement setStatement = null;
+//
+//	        try {
+//	        	/*Create connection with database*/
+//	        	Class.forName("org.sqlite.JDBC");
+//	        	setConnection = DriverManager.getConnection("jdbc:sqlite:E:/eclipseWorkforJava/MyPage/db/movieslist1.db");
+//	        	System.out.println("Opened database successfully");
+//	        	/*Create sql statement*/
+//	        	setStatement = setConnection.createStatement();
+//	        	
+//	        	 
+//	        	try{
+////	        		setStatement.executeUpdate(".open movieslist1.db");
+////	        		setStatement.executeUpdate(".headers on");
+////	        		setStatement.executeUpdate(".mode csv");
+////	        		setStatement.executeUpdate(".output resulttest.csv");
+//	        		
+//	        		setStatement.executeUpdate("select name, age from movietbl, casttbl where movietbl.id = casttbl.id");
+//	        		
+//	        	}catch (Exception e) {
+//	        		System.err.println(e.getClass().getName() + ": " + e.getMessage()+"--cannot open tables");
+//	        	}
+//
+//	        	setStatement.close();
+//	        	setConnection.close();
+//	        } catch (Exception e2) {
+//	        	System.err.println(e2.getClass().getName() + ": " + e2.getMessage()+"--cannot execute updates");
+//	        }
+//	}
+//	  public static void main(String[]args)  
+//	    {  
+//	    	SqlDB.dbToCsv();
+//	    }       
 }
