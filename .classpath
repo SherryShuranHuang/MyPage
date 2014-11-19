@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="E:/eclipseWorkforJava/MyPage/include/httpcomponents-client-4.3.6/lib/commons-logging-1.1.3.jar"/>
 	<classpathentry kind="lib" path="E:/eclipseWorkforJava/MyPage/include/httpcomponents-client-4.3.6/lib/commons-codec-1.6.jar"/>
 	<classpathentry kind="lib" path="E:/eclipseWorkforJava/MyPage/include/HTMLParser-2.0-SNAPSHOT/lib/htmlparser.jar"/>
+	<classpathentry kind="lib" path="E:/eclipseWorkforJava/MyPage/include/sqlite-jdbc-3.7.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

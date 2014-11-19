@@ -90,12 +90,11 @@ public class PageDownLoader {
 		return filePath;
 		
 	}
-//	/**main function to test PageDownLoader class
-//	 * 
-//	 */
+	/**main function to test PageDownLoader class
+	 * 
+	 */
 //	public static void main(String[] args){
 //		PageDownLoader downpage = new PageDownLoader();
-//		downpage.downloadFile("http://www.imdb.com/movies-in-theaters/?ref_=nv_tp_inth_1");
+//		downpage.downloadFile("http://www.imdb.com/title/tt2096672/?ref_=inth_ov_tt");
 //	}
 }
-//test
