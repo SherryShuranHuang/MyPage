@@ -59,6 +59,7 @@ public class GetPageMain {
             	String moviename = HtmlParser.extractMovieName(movielink,"h1");
             	//add movie name to db
             	SqlDB.insertIntoTable("movietbl", index +",'"+ moviename+"'");
+            	System.out.println(moviename);
             	HashSet<String> castlinks=HtmlParser.extractMainCast(movielink);
             	for(String castlink: castlinks){
             		int age = HtmlParser.extractAge(castlink);

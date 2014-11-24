@@ -83,31 +83,32 @@ public class HtmlParser{
 		return linkUrl;	
 		
 	}
-	public static HashSet<String> extractMovieNames(String url, String HeadingTagName){
-		HashSet<String> names = new HashSet<String>();
-		try{
-			Parser nameparser = new Parser(url);
-			nameparser.setEncoding("UTF-8");
-
-			NodeClassFilter headingFilter =new NodeClassFilter(HeadingTag.class);
-			NodeList headingList = nameparser.extractAllNodesThatMatch(headingFilter);
-			for (int i = 0; i < headingList.size(); i++) {
-				String name = "";
-				HeadingTag headingTag=(HeadingTag)headingList.elementAt(i);
-				if(headingTag.getText().startsWith(HeadingTagName)){// h*, *=1,2,3,4,5 or 6
-					name =headingTag.toPlainTextString();//get the content in the <h*> tag
-				}
-				if(name==null){
-					continue;
-				}
-				names.add(name);
-			}
-		}catch (ParserException e) {
-			e.printStackTrace();
-		}
-		return names;	
-
-		}
+	/**extractMovieNames: to extract a list of all the movie names*/
+//	public static HashSet<String> extractMovieNames(String url, String HeadingTagName){
+//		HashSet<String> names = new HashSet<String>();
+//		try{
+//			Parser nameparser = new Parser(url);
+//			nameparser.setEncoding("UTF-8");
+//
+//			NodeClassFilter headingFilter =new NodeClassFilter(HeadingTag.class);
+//			NodeList headingList = nameparser.extractAllNodesThatMatch(headingFilter);
+//			for (int i = 0; i < headingList.size(); i++) {
+//				String name = "";
+//				HeadingTag headingTag=(HeadingTag)headingList.elementAt(i);
+//				if(headingTag.getText().startsWith(HeadingTagName)){// h*, *=1,2,3,4,5 or 6
+//					name =headingTag.toPlainTextString();//get the content in the <h*> tag
+//				}
+//				if(name==null){
+//					continue;
+//				}
+//				names.add(name);
+//			}
+//		}catch (ParserException e) {
+//			e.printStackTrace();
+//		}
+//		return names;	
+//
+//		}
 	
 	public static String extractMovieName(String url, String HeadingTagName){
 		//HashSet<String> names = new HashSet<String>();
@@ -123,7 +124,8 @@ public class HtmlParser{
 				HeadingTag headingTag=(HeadingTag)headingList.elementAt(i);
 				if(headingTag.getText().startsWith(HeadingTagName)){// h*, *=1,2,3,4,5 or 6
 					name =headingTag.toPlainTextString();//get the content in the <h*> tag
-					name = name.replaceAll("[\n]", " ");
+					name = name.replaceAll("[\n\t]", " ");
+					name = name.replaceAll("[\']", "-");
 				}
 			}
 		}catch (ParserException e) {
