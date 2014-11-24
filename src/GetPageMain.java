@@ -36,7 +36,7 @@ public class GetPageMain {
         };  
         
         initCrawlerWithSeeds(seeds);  
-        SqlDB.createTbl();
+        SqlDB.createTbl("movietbl");
         
         if(!linkDB.unvisitedIsEmpty()){// condition needs more consideration
             //TODO recuesive retrieve data and stroe in to database
@@ -68,8 +68,9 @@ public class GetPageMain {
             			//SqlDB.insertIntoTable("casttbl", index +","+ age);	
             		}
             	}
-            	int average = totalAge/castNum;
-            	SqlDB.insertIntoTable("casttbl", index +","+ average);
+            	int ave_age = totalAge/castNum;
+            	//SqlDB.insertIntoTable("casttbl", index +","+ ave_age);
+            	SqlDB.updateAge("movietbl", index, ave_age);
             	index++;
 
             }          
